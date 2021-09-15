@@ -38,4 +38,6 @@ while True:
     time.sleep(2)
     camera.capture(outfile)
     camera.close()
+    
+    # Now let's sleep to complete the minute
     time.sleep(45)
