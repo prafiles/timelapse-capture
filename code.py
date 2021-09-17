@@ -28,9 +28,9 @@ while True:
     # Capture normal shot
     stub = cur_time.strftime("%Y%m%d%H%M")
     camera = PiCamera()
-    # camera.shutter_speed = 1750000
+    #camera.shutter_speed = 1750000
     camera.iso = 100
-    camera.exposure_mode = 'off'
+    #camera.exposure_mode = 'on'
     camera.vflip=True
     camera.resolution=(4056,3040)
     outfile = "normal/%s.jpg" % (stub)
