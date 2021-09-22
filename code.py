@@ -20,9 +20,8 @@ while True:
         camera.exposure_mode = 'off'
         camera.vflip = True
         camera.hflip = True
-        camera.format = 'rgb'
 
-        outfile = "low/%s_%x.raw" % (stub,speed)
+        outfile = "low/%s_%x.jpg" % (stub,speed)
         camera.start_preview()
         time.sleep(4)
         camera.capture(outfile)
@@ -39,9 +38,8 @@ while True:
         camera.vflip = True
         camera.hflip = True
         camera.meter_mode = 'matrix'
-        camera.format = 'rgb'
 
-        outfile = "normal/%s_%x.raw" % (stub,exposure)
+        outfile = "normal/%s_%x.jpg" % (stub,exposure)
         camera.start_preview()
         time.sleep(5)
         camera.capture(outfile)
