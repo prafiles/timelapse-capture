@@ -21,10 +21,10 @@ while True:
     camera.vflip = False
     camera.hflip = False
 
-    outfile = "low/%s_%x.raw" % (stub,speed)
+    outfile = "low/%s_%x.jpg" % (stub,speed)
     camera.start_preview()
     time.sleep(2)
-    camera.capture(outfile, format='raw')
+    camera.capture(outfile, format='jpeg', quality=90)
     camera.close()
 
     # Capture normal shot
@@ -41,10 +41,10 @@ while True:
     camera.hflip = False
     #camera.meter_mode = 'matrix'
 
-    outfile = "normal/%s_%x.raw" % (stub,exposure)
+    outfile = "normal/%s_%x.jpg" % (stub,exposure)
     camera.start_preview()
     time.sleep(2)
-    camera.capture(outfile, format='raw')
+    camera.capture(outfile, format='jpeg', quality=90)
     camera.close()
     
     # Now let's sleep to complete the minute
