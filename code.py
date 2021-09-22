@@ -18,8 +18,8 @@ while True:
         camera.shutter_speed = speed * 1000000
         camera.iso = 100
         camera.exposure_mode = 'off'
-        camera.vflip = True
-        camera.hflip = True
+        camera.vflip = False
+        camera.hflip = False
 
         outfile = "low/%s_%x.jpg" % (stub,speed)
         camera.start_preview()
@@ -35,8 +35,8 @@ while True:
         )
         camera.iso = 100
         camera.exposure_compensation = exposure
-        camera.vflip = True
-        camera.hflip = True
+        camera.vflip = False
+        camera.hflip = False
         camera.meter_mode = 'matrix'
 
         outfile = "normal/%s_%x.jpg" % (stub,exposure)
