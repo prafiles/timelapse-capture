@@ -24,7 +24,7 @@ while True:
     outfile = "low/%s_%x.raw" % (stub,speed)
     camera.start_preview()
     time.sleep(2)
-    camera.capture(outfile, format='rgba')
+    camera.capture(outfile, format='raw')
     camera.close()
 
     # Capture normal shot
@@ -44,7 +44,7 @@ while True:
     outfile = "normal/%s_%x.raw" % (stub,exposure)
     camera.start_preview()
     time.sleep(2)
-    camera.capture(outfile, format='rgba')
+    camera.capture(outfile, format='raw')
     camera.close()
     
     # Now let's sleep to complete the minute
