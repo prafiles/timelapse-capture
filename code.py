@@ -23,13 +23,13 @@ while True:
 
         outfile = "low/%s_%x.jpg" % (stub,speed)
         camera.start_preview()
-        time.sleep(4)
+        time.sleep(2)
         camera.capture(outfile)
         camera.close()
 
     # Capture normal shot
-    for exposure in range(-10,15,5):
-        time.sleep(5)
+    for exposure in range(-12,18,6):
+        time.sleep(2)
         camera = PiCamera(
             resolution=(4056,3040)
         )
@@ -46,3 +46,4 @@ while True:
         camera.close()
     
     # Now let's sleep to complete the minute
+    time.sleep(30)
