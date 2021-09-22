@@ -10,22 +10,22 @@ while True:
 
     # You can change these as needed. Six seconds (6000000)
     # is the max for shutter speed and 800 is the max for ISO.
-    for speed in range(2,8,2):
-        camera = PiCamera(
-            resolution=(4056,3040),
-            framerate = Fraction(1,speed),
-        )
-        camera.shutter_speed = speed * 1000000
-        camera.iso = 100
-        camera.exposure_mode = 'off'
-        camera.vflip = False
-        camera.hflip = False
+    speed = 6 # 6 seconds max exposure
+    camera = PiCamera(
+        resolution=(4056,3040),
+        framerate = Fraction(1,speed),
+    )
+    camera.shutter_speed = speed * 1000000
+    camera.iso = 60
+    camera.exposure_mode = 'off'
+    camera.vflip = False
+    camera.hflip = False
 
-        outfile = "low/%s_%x.jpg" % (stub,speed)
-        camera.start_preview()
-        time.sleep(2)
-        camera.capture(outfile)
-        camera.close()
+    outfile = "low/%s_%x.jpg" % (stub,speed)
+    camera.start_preview()
+    time.sleep(2)
+    camera.capture(outfile)
+    camera.close()
 
     # Capture normal shot
     for exposure in range(-12,18,6):
@@ -33,11 +33,12 @@ while True:
         camera = PiCamera(
             resolution=(4056,3040)
         )
-        camera.iso = 100
+        camera.iso = 60
+        camera.exposure_mode = 'night'
         camera.exposure_compensation = exposure
         camera.vflip = False
         camera.hflip = False
-        camera.meter_mode = 'matrix'
+        #camera.meter_mode = 'matrix'
 
         outfile = "normal/%s_%x.jpg" % (stub,exposure)
         camera.start_preview()
@@ -46,4 +47,4 @@ while True:
         camera.close()
     
     # Now let's sleep to complete the minute
-    time.sleep(25)
+    time.sleep(35)
