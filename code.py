@@ -14,15 +14,15 @@ while True:
         camera = PiCamera(
             resolution=(4056,3040),
             framerate = Fraction(1,speed),
-            #shutter_speed = speed * 1000000,
-            iso = 100,
-            exposure_mode = 'off',
-            vflip = True,
-            hflip = True,
-            format = 'rgb'
         )
-    
-        outfile = "low/%s_%x.jpg" % (stub,speed)
+        camera.shutter_speed = speed * 1000000
+        camera.iso = 100
+        camera.exposure_mode = 'off'
+        camera.vflip = True
+        camera.hflip = True
+        camera.format = 'rgb'
+
+        outfile = "low/%s_%x.raw" % (stub,speed)
         camera.start_preview()
         time.sleep(4)
         camera.capture(outfile)
@@ -32,15 +32,16 @@ while True:
     for exposure in range(-10,15,5):
         time.sleep(5)
         camera = PiCamera(
-            resolution=(4056,3040),
-            iso = 100,
-            exposure_compensation = exposure,
-            hflip = True,
-            meter_mode = 'matrix',
-            format = 'rgb'
+            resolution=(4056,3040)
         )
+        camera.iso = 100
+        camera.exposure_compensation = exposure,
+        camera.vflip = True
+        camera.hflip = True
+        camera.meter_mode = 'matrix'
+        camera.format = 'rgb'
 
-        outfile = "normal/%s_%x.jpg" % (stub,exposure)
+        outfile = "normal/%s_%x.raw" % (stub,exposure)
         camera.start_preview()
         time.sleep(5)
         camera.capture(outfile)
