@@ -14,7 +14,7 @@ while True:
         camera = PiCamera(
             resolution=(4056,3040),
             framerate = Fraction(1,speed),
-            shutter_speed = speed * 1000000,
+            #shutter_speed = speed * 1000000,
             iso = 100,
             exposure_mode = 'off',
             vflip = True,
