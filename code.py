@@ -21,30 +21,31 @@ while True:
     camera.vflip = False
     camera.hflip = False
 
-    outfile = "low/%s_%x.jpg" % (stub,speed)
+    outfile = "low/%s_%x.raw" % (stub,speed)
     camera.start_preview()
     time.sleep(2)
-    camera.capture(outfile)
+    camera.capture(outfile, format='rgba')
     camera.close()
 
     # Capture normal shot
-    for exposure in range(-12,18,6):
-        time.sleep(1)
-        camera = PiCamera(
-            resolution=(4056,3040)
-        )
-        camera.iso = 60
-        camera.exposure_mode = 'night'
-        camera.exposure_compensation = exposure
-        camera.vflip = False
-        camera.hflip = False
-        #camera.meter_mode = 'matrix'
+    # for exposure in range(-12,18,6):
+    exposure = 0
+    time.sleep(1)
+    camera = PiCamera(
+        resolution=(4056,3040)
+    )
+    camera.iso = 60
+    camera.exposure_mode = 'night'
+    camera.exposure_compensation = exposure
+    camera.vflip = False
+    camera.hflip = False
+    #camera.meter_mode = 'matrix'
 
-        outfile = "normal/%s_%x.jpg" % (stub,exposure)
-        camera.start_preview()
-        time.sleep(2)
-        camera.capture(outfile)
-        camera.close()
+    outfile = "normal/%s_%x.raw" % (stub,exposure)
+    camera.start_preview()
+    time.sleep(2)
+    camera.capture(outfile, format='rgba')
+    camera.close()
     
     # Now let's sleep to complete the minute
-    time.sleep(35)
+    time.sleep(50)
