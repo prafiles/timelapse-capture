@@ -34,7 +34,7 @@ while True:
             resolution=(4056,3040)
         )
         camera.iso = 100
-        camera.exposure_compensation = exposure,
+        camera.exposure_compensation = exposure
         camera.vflip = True
         camera.hflip = True
         camera.meter_mode = 'matrix'
