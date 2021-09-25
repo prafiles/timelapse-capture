@@ -28,7 +28,7 @@ while True:
     camera.close()
 
     # Capture normal shot
-    for exposure in range(-6,12,6):
+    for exposure in range(-12,24,12):
         time.sleep(1)
         camera = PiCamera(
             resolution=(4056,3040)
