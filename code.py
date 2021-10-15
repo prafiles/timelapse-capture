@@ -47,4 +47,4 @@ while True:
         camera.close()
     
     # Now let's sleep to complete the minute
-    time.sleep(45)
+    time.sleep(885)
