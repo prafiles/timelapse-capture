@@ -1,7 +1,7 @@
 #!/bin/python3
 from picamera import PiCamera
 from fractions import Fraction
-import datetime, time, sched
+import datetime, time, sched, os
 
 while True:
     cur_time = datetime.datetime.now()
@@ -27,27 +27,14 @@ while True:
         time.sleep(2)
         camera.capture(outfile, format='jpeg', quality=90)
         camera.close()
+        time.sleep(5)
     
     if cur_time.hour > 5 or cur_time.hour < 20:
 
         # Capture HDR shot
-        for exposure in range(-12,24,12):
-            time.sleep(1)
-            camera = PiCamera(
-                resolution=(4056,3040)
-            )
-            camera.iso = 60
-            camera.exposure_mode = 'night'
-            camera.exposure_compensation = exposure
-            camera.vflip = False
-            camera.hflip = False
-            #camera.meter_mode = 'matrix'
-
-            outfile = "normal/%s_%x.jpg" % (stub,exposure)
-            camera.start_preview()
-            time.sleep(2)
-            camera.capture(outfile, format='jpeg', quality=90)
-            camera.close()
-    
+        command = '/usr/local/bin/libcamera-still -o %s.jpg --denoise cdn_off -q 100 --post-process-file hdr.json' % stub
+        stream = os.popen(command)
+        output = stream.read()
+            
     # Now let's sleep to complete the minute
-    time.sleep(885)
+    time.sleep(60)
