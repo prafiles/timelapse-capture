@@ -8,6 +8,7 @@ while True:
     stub = cur_time.strftime("%Y%m%d%H%M")
 
     if cur_time.hour < 8 or cur_time.hour > 17:
+        print("Capturing Night " + stub)
         # Capture long exposure shot
         # You can change these as needed. Six seconds (6000000)
         # is the max for shutter speed and 800 is the max for ISO.
@@ -30,7 +31,7 @@ while True:
         time.sleep(5)
     
     if cur_time.hour > 5 or cur_time.hour < 20:
-
+        print("Capturing HDR " + stub)
         # Capture HDR shot
         command = '/usr/local/bin/libcamera-still -o %s.jpg --denoise cdn_off -q 100 --post-process-file hdr.json' % stub
         stream = os.popen(command)
