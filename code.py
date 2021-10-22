@@ -30,7 +30,7 @@ while True:
         camera.close()
         time.sleep(5)
     
-    if cur_time.hour > 5 or cur_time.hour < 20:
+    if cur_time.hour > 5 and cur_time.hour < 20:
         print("Capturing HDR " + stub)
         # Capture HDR shot
         command = '/usr/local/bin/libcamera-still -o normal/%s.jpg --denoise cdn_off -q 100 --post-process-file hdr.json' % stub
