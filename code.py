@@ -33,7 +33,7 @@ while True:
     if cur_time.hour > 5 or cur_time.hour < 20:
         print("Capturing HDR " + stub)
         # Capture HDR shot
-        command = '/usr/local/bin/libcamera-still -o %s.jpg --denoise cdn_off -q 100 --post-process-file hdr.json' % stub
+        command = '/usr/local/bin/libcamera-still -o normal/%s.jpg --denoise cdn_off -q 100 --post-process-file hdr.json' % stub
         stream = os.popen(command)
         output = stream.read()
             
