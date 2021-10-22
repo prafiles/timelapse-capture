@@ -9,25 +9,9 @@ while True:
 
     if cur_time.hour < 8 or cur_time.hour > 17:
         print("Capturing Night " + stub)
-        # Capture long exposure shot
-        # You can change these as needed. Six seconds (6000000)
-        # is the max for shutter speed and 800 is the max for ISO.
-        speed = 6 # 6 seconds max exposure
-        camera = PiCamera(
-            resolution=(4056,3040),
-            framerate = Fraction(1,speed),
-        )
-        camera.shutter_speed = speed * 1000000
-        camera.iso = 60
-        camera.exposure_mode = 'off'
-        camera.vflip = False
-        camera.hflip = False
-
-        outfile = "low/%s_%x.jpg" % (stub,speed)
-        camera.start_preview()
-        time.sleep(2)
-        camera.capture(outfile, format='jpeg', quality=90)
-        camera.close()
+        command = '/usr/local/bin/libcamera-still -o low/%s.jpg --shutter 6000000 --denoise cdn_off -q 100 --post-process-file hdr.json' % stub
+        stream = os.popen(command)
+        output = stream.read()
         time.sleep(5)
     
     if cur_time.hour > 5 and cur_time.hour < 20:
@@ -36,6 +20,7 @@ while True:
         command = '/usr/local/bin/libcamera-still -o normal/%s.jpg --denoise cdn_off -q 100 --post-process-file hdr.json' % stub
         stream = os.popen(command)
         output = stream.read()
+        time.sleep(5)
             
     # Now let's sleep to complete the minute
-    time.sleep(60)
+    time.sleep(50)
