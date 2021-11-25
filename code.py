@@ -1,5 +1,4 @@
 #!/bin/python3
-from picamera import PiCamera
 from fractions import Fraction
 import datetime, time, sched, os
 
