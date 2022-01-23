@@ -13,7 +13,7 @@
 	"global_tonemap_strength" : 0.2,
 	"local_pos_strength" : [ 0, 6.0, 1024, 2.0, 4095, 2.0 ],
 	"local_neg_strength" : [ 0, 4.0, 1024, 1.5, 4095, 1.5 ],
-	"local_tonemap_strength" : 0.5,
-	"local_colour_scale" : 0.5
+	"local_tonemap_strength" : 1.0,
+	"local_colour_scale" : 0.3
     }
 }
