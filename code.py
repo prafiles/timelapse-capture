@@ -13,7 +13,7 @@ def capture():
     # Now let's sleep to complete the minute
 
 def timer():
-    threading.Timer(60.0, hello_world).start() # called every minute
+    threading.Timer(60.0, capture).start() # called every minute
     print("Hello, World!")
 
 print("Starting Timer")
