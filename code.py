@@ -1,6 +1,6 @@
 #!/bin/python3
 from fractions import Fraction
-from threading import Timer
+from threading import Thread
 from time import sleep
 from datetime import datetime
 from os import popen
@@ -21,8 +21,9 @@ def capture():
 
 def timer():
     while True:
-        Timer(0, capture).start() # called every minute
         print("Capture started: " + get_time())
+        thread = Thread(target=capture).start() # called every minute
+        thread.start()
         # Now let's sleep to complete the minute
         sleep(60)
 
